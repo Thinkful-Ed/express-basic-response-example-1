@@ -4,19 +4,15 @@
 // ================================================
 
 const express = require('express');
-const bodyParser = require('body-parser');
-
 const app = express();
 
 
-// our app will use bodyParser to try to 
-// parse JSON and/or URL encoded data from
-// request bodies. If you don't add 
+// our app will use Express to try to parse
+// JSON from request bodies. If you don't add 
 // body parsing middleware, even if the raw
 // request contains, say, a JSON body,
 // `req.body` will be empty in the request handler
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.json());
 
 
 // we'll run all requests to `/example-1` through this 
@@ -30,7 +26,7 @@ const logRequest = (req, res, next) => {
     "content type": req.get('Content-Type'),
     query: JSON.stringify(req.query),
     body: JSON.stringify(req.body)
-  }
+  };
   console.dir(logObj);
   // we'll learn more about middleware later in this course, but for now
   // know that calling `next()` causes the next function in the middleware stack
