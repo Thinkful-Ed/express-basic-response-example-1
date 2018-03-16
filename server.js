@@ -1,5 +1,3 @@
-'use strict';
-
 // EXAMPLE 1: Use logging to explore request object
 // ================================================
 
